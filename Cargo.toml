@@ -1,0 +1,25 @@
+[package]
+name = "titankernel-orch"
+version = "0.1.0"
+edition = "2021"
+description = "TitanKernel Rust orchestration layer — streaming sparse attention scheduler"
+authors = ["Julius Cameron Hill <titan@titanu.ai>"]
+
+[[bin]]
+name = "titankernel"
+path = "src/main.rs"
+
+[dependencies]
+
+[build-dependencies]
+cc = "1.0"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[profile.bench]
+inherits = "release"
+debug = true
